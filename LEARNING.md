@@ -23,3 +23,4 @@
     "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1
+-Ajouter test suivre instruction sur site web jest
