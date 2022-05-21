@@ -50,6 +50,7 @@ export interface user extends Document {
     youtubeUrl?: string;
     twitterUrl?: string;
     phoneNumbers: Array<string>;
+    authorizationLevel: number;
 }
 
 export interface currentUser extends Document {
@@ -58,6 +59,7 @@ export interface currentUser extends Document {
     firstname: string;
     lastname: string;
     picture: string
+    authorizationLevel: number;
 }
 
 export interface signInUser extends Document {
