@@ -32,3 +32,4 @@
     - yarn add passport-jwt @types/passport-jwt
     - yarn add bscrypt @types/bscrypt, nous permet de creer des hashcode pour nos mot de passes
     - yarn add jsnowebtoken @types/jsnowebtoken, nous permet de creer des token d'itentification
+- Nous ajoutons ensuit nos models (bien reviser nos information pour ne plus revenir decu)
