@@ -24,3 +24,11 @@
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1
 -Ajouter test suivre instruction sur site web jest
+- Installation des modules utiles
+    - yarn add dotenv, nous permettra d'ajouter des variable enviroment
+    - yarn add passport @types/passport, nous permet d'utiliser passport est un middleware pour les authentication
+    - yarn add body-parser @types/body-parser, nous permet d'utiliser le middleware body-parser pour parse les req.body en json 
+    - yarn add mongoose @types/mongooses, nous permet d'utiliser la base de donnee mongoose
+    - yarn add passport-jwt @types/passport-jwt
+    - yarn add bscrypt @types/bscrypt, nous permet de creer des hashcode pour nos mot de passes
+    - yarn add jsnowebtoken @types/jsnowebtoken, nous permet de creer des token d'itentification
