@@ -1,7 +1,8 @@
 import express = require('express');
+import dotenv = require('dotenv');
 
 const app = express();
-const port = 8080;
+dotenv.config();
 
 app.get('/', (req, res) => {
     res.send({
@@ -10,7 +11,7 @@ app.get('/', (req, res) => {
     })
 } );
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
     // tslint:disable-next-line:no-console
-    console.log(`server open on http://localhost:${port}`)
+    console.log(`server open on http://localhost:${process.env.PORT}`)
 } );
