@@ -1,5 +1,5 @@
 import mongoose, { model, Model, Document } from "mongoose";
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     email: {
@@ -35,7 +35,7 @@ const UserSchema = new Schema({
         type: Number,
         required: true
     }
-})
+});
 
 export interface user extends Document {
     email: string;
@@ -51,7 +51,7 @@ export interface user extends Document {
     twitterUrl?: string;
     phoneNumbers: Array<string>;
     authorizationLevel: number;
-}
+};
 
 export interface currentUser extends Document {
     email: string;
@@ -60,22 +60,22 @@ export interface currentUser extends Document {
     lastname: string;
     picture: string
     authorizationLevel: number;
-}
+};
 
 export interface signInUser extends Document {
     email?: string;
     password?: string;
-}
+};
 
 export interface signUpUser extends user {
     confirmPassword: string;
-}
+};
 
 export interface signUpUserError extends Document {
     emailError?: string;
     passwordError?: string;
     confirmPassword?: string;
-}
+};
 
 const User: Model<user> = model('users', UserSchema);
 
