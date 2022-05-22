@@ -30,6 +30,7 @@
     - yarn add body-parser @types/body-parser, nous permet d'utiliser le middleware body-parser pour parse les req.body en json 
     - yarn add mongoose @types/mongooses, nous permet d'utiliser la base de donnee mongoose
     - yarn add passport-jwt @types/passport-jwt
-    - yarn add bscrypt @types/bscrypt, nous permet de creer des hashcode pour nos mot de passes
+    - yarn add bscryptjs @types/bscryptjs, nous permet de creer des hashcode pour nos mot de passes
     - yarn add jsnowebtoken @types/jsnowebtoken, nous permet de creer des token d'itentification
 - Nous ajoutons ensuit nos models (bien reviser nos information pour ne plus revenir decu)
+- Nous allons Procede a la creation de l'user route
