@@ -62,7 +62,7 @@ export interface currentUser extends Document {
     authorizationLevel: number;
 };
 
-export interface signInUser extends Document {
+export interface signInUser {
     email?: string;
     password?: string;
 };
@@ -71,7 +71,7 @@ export interface signUpUser extends user {
     confirmPassword: string;
 };
 
-export interface signUpUserError extends Document {
+export interface signUpUserError {
     emailError?: string;
     passwordError?: string;
     confirmPassword?: string;
