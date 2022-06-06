@@ -4,21 +4,21 @@ import { project } from "./Project";
 const Schema = mongoose.Schema;
 
 const ProjectDevelopperSchema = new Schema({
-    devId: {
+    developper: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'developpers'
     },
-    projectId: {
+    project: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'projects'
     }
 });
 
-export interface projectDevelopper {
-    devId: string|developper
-    projectId: string|project
+export interface projectDevelopper extends Document {
+    developper: string|developper
+    project: string|project
 };
 
 const ProjectDevelopper: Model<projectDevelopper> = model('projectDeveloppers', ProjectDevelopperSchema);

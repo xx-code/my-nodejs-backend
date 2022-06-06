@@ -18,7 +18,7 @@ const ProjectLinkSchema = new Schema({
     }
 });
 
-export interface projectLink extends Document{
+export interface projectLink extends Document {
     project: string|project,
     url: string,
     plateform: string

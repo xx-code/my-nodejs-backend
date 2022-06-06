@@ -39,8 +39,8 @@ export interface project extends Document{
     name: string,
     description: string,
     owner: string|developper,
-    cover?: media,
-    icon?: media,
+    cover?: media|string,
+    icon?: media|string,
     creationDate: Date,
     updateDate: Date
 };

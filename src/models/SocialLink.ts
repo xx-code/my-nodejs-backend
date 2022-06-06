@@ -2,7 +2,7 @@ import mongoose, { model, Model, Document } from "mongoose";
 const Schema = mongoose.Schema;
 
 const SocialLink = new Schema({
-    userId: {
+    user: {
         type: Schema.Types.ObjectId,
         required: true,
         ref:'users'
@@ -18,13 +18,13 @@ const SocialLink = new Schema({
 });
 
 export interface socialLink extends Document {
-    userId: string,
+    user: string,
     url: string,
     name: string
 };
 
 export interface scialLinkError {
-    userIdError: string,
+    userError: string,
     urlError: string,
     nameError: string
 }

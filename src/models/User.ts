@@ -1,4 +1,5 @@
 import mongoose, { model, Model, Document } from "mongoose";
+import { media } from "./Media";
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -23,35 +24,50 @@ const UserSchema = new Schema({
         required: true
     },
     aboutMe: String,
-    picture: String,
+    picture: {
+        type: Schema.Types.ObjectId,
+        ref: 'media'
+    },
     phoneNumbers: [
         String
     ],
     priority: {
         type: Number,
         required: true
+    },
+    creationDate: {
+        type: Date,
+        default: Date.now()
+    },
+    updateDate: {
+        type: Date,
+        default: Date.now()
     }
 });
 
 export interface user extends Document {
-    email: string;
-    password: string;
-    username: string;
-    firstname: string;
-    lastname: string;
-    aboutMe: string;
-    picture?: string;
-    phoneNumbers: string[];
-    priority: number;
+    email: string,
+    password: string,
+    username: string,
+    firstname: string,
+    lastname: string,
+    aboutMe: string,
+    picture?: string|media,
+    phoneNumbers: string[],
+    priority: number,
+    creationDate: Date,
+    updateDate: Date
 };
 
 export interface currentUser extends Document {
-    email: string;
-    username: string;
-    firstname: string;
-    lastname: string;
-    picture: string;
-    authorizationLevel: number;
+    email: string,
+    username: string,
+    firstname: string,
+    lastname: string,
+    picture: string,
+    priority: number,
+    creationDate: Date,
+    updateDate: Date
 };
 
 export interface signInUser {

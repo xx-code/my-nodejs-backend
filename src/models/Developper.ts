@@ -22,7 +22,7 @@ const DevelopperSchema = new Schema({
     }
 });
 
-export interface developper {
+export interface developper extends Document {
     user?: string|currentUser,
     name?: string,
     isRegister: boolean,

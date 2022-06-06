@@ -4,21 +4,21 @@ import { project } from "./Project";
 const Schema = mongoose.Schema;
 
 const GallerySchema = new Schema({
-    projectId: {
+    project: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'projects'
     },
-    mediaId: {
+    media: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'medias'
     }
 });
 
-export interface gallery {
-    projectId: string|project,
-    mediaId: string|media
+export interface gallery extends Document {
+    project: string|project,
+    media: string|media
 };
 
 const Gallery: Model<gallery> = model('gallery', GallerySchema);
