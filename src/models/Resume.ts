@@ -1,4 +1,5 @@
 import mongoose, { model, Model, Document } from 'mongoose';
+import { currentUser } from './User';
 const Schema = mongoose.Schema
 
 const ResumeSchema = new Schema({
@@ -7,26 +8,28 @@ const ResumeSchema = new Schema({
         required: true,
         ref: 'users'
     },
-    aboutYou: String,
-    experiences: [
-        {
-            title: String,
-            startDate: {
-                type: Date,
-                required: true
-            },
-            endDate: Date,
-            isCurrent: {
-                type: Boolean,
-                required: true
-            },
-            typeExperience: {
-                type: String,
-                enum: ['Work', 'Certification', 'Education'],
-                default: 'Work'
-            }
-        }
-    ]
+    title: {
+        type: String,
+        required: true
+    },
+    startDate: {
+        type: Date,
+        required: true
+    },
+    endDate: Date,
+    isCurrent: {
+        type: Boolean,
+        required: true
+    },
+    type: {
+        type: String,
+        enum: ['Work', 'Certification', 'Education'],
+        default: 'Work'
+    },
+    detail: {
+        type: String,
+        required: true
+    }
 });
 
 export enum TypeExperience {
@@ -35,31 +38,24 @@ export enum TypeExperience {
     Education='Education'
 };
 
-export interface experience extends Document {
+export interface resume extends Document {
+    user: string|currentUser,
     title: string,
+    detail: string,
     startDate: Date,
     endDate?: Date,
     isCurrent: boolean,
-    typeExperience: string
-};
-
-export interface resume extends Document {
-    user: string,
-    aboutYou: string,
-    experiences: experience[]
+    type: string
 };
 
 export interface resumeError {
-    user?: string,
-    about?: string
+    userError?: string,
+    titleError?: string,
+    detailError?: string,
+    startDateError?: string,
+    typeError?: string
 };
 
-export interface experienceError {
-    titleError: string,
-    startDateError: string,
-    typeExperience: string,
-    isCurrent: string
-};
 
 const Resume: Model<resume> = model('resumes', ResumeSchema);
 
