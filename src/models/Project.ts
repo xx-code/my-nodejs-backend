@@ -1,4 +1,6 @@
 import mongoose, { model, Model, Document } from "mongoose";
+import { developper } from "./Developper";
+import { media } from "./Media";
 const Schema = mongoose.Schema;
 
 const ProjectSchema = new mongoose.Schema({
@@ -11,70 +13,42 @@ const ProjectSchema = new mongoose.Schema({
         required: true
     },
     owner: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
-        default: 'Me'
+        ref: 'developpers'
     },
-    developers: [
-        {
-            userId: {
-                type: Schema.Types.ObjectId,
-                ref: 'users'
-            },
-            isRegister: {
-                type: Boolean,
-                required: false
-            },
-            name: String
-        }
-    ],
-    links: [
-        {
-            url: {
-                type: String,
-                required: true
-            },
-            plateform: {
-                type: String,
-                required: true,
-                enum: ['Android', 'IOS', 'WINDOWS', 'MACOS']
-            }
-        }
-    ]
+    cover: {
+        type: Schema.Types.ObjectId,
+        ref: 'medias'
+    },
+    icon: {
+        type: Schema.Types.ObjectId,
+        ref: 'medias'
+    },
+    creationDate: {
+        type: Date,
+        default: Date.now()
+    },
+    updateDate: {
+        type: Date,
+        default: Date.now()
+    }
 });
-
-export interface developer extends Document {
-    userId?: string,
-    isRegister: boolean,
-    name: string
-};
-
-export interface link extends Document {
-    url: string,
-    plateform: string
-};
 
 export interface project extends Document{
     name: string,
     description: string,
-    owner: string,
-    developers: developer[],
-    links: link[]
+    owner: string|developper,
+    cover?: media,
+    icon?: media,
+    creationDate: Date,
+    updateDate: Date
 };
 
 export interface projectError {
     nameError?: string,
     descriptionError?: string,
     ownerError?: string
-};
-
-export interface developerError {
-    isRegister?: string
-};
-
-export interface linkError{
-    urlError?: string,
-    plateform?: string
 };
 
 const Project: Model<project> = model('projects', ProjectSchema);
