@@ -1,7 +1,7 @@
 import mongoose, { model, Model, Document } from "mongoose";
 const Schema = mongoose.Schema;
 
-const ImageSchema = new Schema({
+const MediaSchema = new Schema({
     cloudinaryUrl: {
         type: String,
         required: true
@@ -20,18 +20,18 @@ const ImageSchema = new Schema({
     }
 });
 
-export interface image extends Document {
+export interface media extends Document {
     cloudinaryUrl: string,
     cloudinaryId: string,
     creationDate: Date,
     updateDate: Date
 }
 
-export interface imageError {
+export interface mediaError {
     cloudinaryUrlError?: string,
     cloudinaryIdError?: string
 }
 
-const Image: Model<image> = model('images', ImageSchema);
+const Media: Model<media> = model('medias', MediaSchema);
 
-export default Image;
+export default Media;
