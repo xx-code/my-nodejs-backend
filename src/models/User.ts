@@ -22,16 +22,12 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    aboutMe: String,
     picture: String,
-    linkedinUrl: String,
-    githubUrl: String,
-    instagramUrl: String,
-    youtubeUrl: String,
-    twitterUrl: String,
     phoneNumbers: [
         String
     ],
-    authorizationLevel: {
+    priority: {
         type: Number,
         required: true
     }
@@ -43,14 +39,10 @@ export interface user extends Document {
     username: string;
     firstname: string;
     lastname: string;
+    aboutMe: string;
     picture?: string;
-    linkedinUrl?: string;
-    githubUrlUrl?: string;
-    instagramUrl?: string;
-    youtubeUrl?: string;
-    twitterUrl?: string;
     phoneNumbers: string[];
-    authorizationLevel: number;
+    priority: number;
 };
 
 export interface currentUser extends Document {
@@ -58,7 +50,7 @@ export interface currentUser extends Document {
     username: string;
     firstname: string;
     lastname: string;
-    picture: string
+    picture: string;
     authorizationLevel: number;
 };
 
