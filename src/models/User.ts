@@ -49,7 +49,7 @@ export interface user extends Document {
     instagramUrl?: string;
     youtubeUrl?: string;
     twitterUrl?: string;
-    phoneNumbers: Array<string>;
+    phoneNumbers: string[];
     authorizationLevel: number;
 };
 

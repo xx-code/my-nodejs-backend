@@ -58,8 +58,8 @@ export interface project extends Document{
     name: string,
     description: string,
     owner: string,
-    developers: Array<developer>,
-    links: Array<link> 
+    developers: developer[],
+    links: link[]
 };
 
 export interface projectError {

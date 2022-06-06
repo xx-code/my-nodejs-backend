@@ -46,7 +46,7 @@ export interface experience extends Document {
 export interface resume extends Document {
     user: string,
     aboutYou: string,
-    experiences: Array<experience>
+    experiences: experience[]
 };
 
 export interface resumeError {
