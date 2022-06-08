@@ -25,12 +25,12 @@ export namespace Response {
     export function pushError(status:number, error:string, message:string) {
         if (instance)
             return instance.status(status).send({ error: error, message: message });
-        throw 'error operation impossible - verify if instance is initialize';
+        throw new Error('error operation impossible - verify if instance is initialize');
     }
 
     export function pushSuccess(status:number, object:any) {
         if (instance)
             return instance.status(status).send(object)
-        throw 'error operation impossible - verify if action is '
+        throw new Error('error operation impossible - verify if action is ');
     }
 };
