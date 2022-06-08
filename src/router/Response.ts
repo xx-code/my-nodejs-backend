@@ -18,13 +18,18 @@ export const ResponseCode = {
     InternalServerError: 500
 }
 
-export default class Response {
-    action:any;
+export namespace Response {
+    export let instance:any;
 
-    pushError(status:number, error:string, message:string) {
-
+    export function pushError(status:number, error:string, message:string) {
+        if (instance)
+            return instance.status(status).send({ error: error, message: message });
+        throw 'error operation impossible - verify if instance is initialize';
     }
 
-    pushResponse(status:number, object:any) {
+    export function pushSuccess(status:number, object:any) {
+        if (instance)
+            return instance.status(status).send(object)
+        throw 'error operation impossible - verify if action is '
     }
 };
