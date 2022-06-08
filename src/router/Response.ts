@@ -4,7 +4,8 @@ export interface request {
     query: any,
     body: any,
     file: any,
-    files: any
+    files: any,
+    lang: any
 };
 
 export const ResponseCode = {
