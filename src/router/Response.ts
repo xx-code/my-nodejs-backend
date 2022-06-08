@@ -1,11 +1,11 @@
 
 export interface request {
-    param: any,
-    query: any,
-    body: any,
-    file: any,
-    files: any,
-    lang: any
+    param?: any,
+    query?: any,
+    body?: any,
+    file?: any,
+    files?: any,
+    lang?: any
 };
 
 export const ResponseCode = {

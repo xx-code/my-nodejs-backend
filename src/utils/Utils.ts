@@ -1,3 +1,5 @@
+import { request } from "../router/Response";
+
 export namespace Utils {
     export function isEmpty(value: any) {
         if (value === undefined)
@@ -15,7 +17,7 @@ export namespace Utils {
         return false;
     }
 
-    export function matchLanguage(language: string) {
-        return language
+    export function matchLanguage(query: request) {
+        return !isEmpty(query.lang) ? query.lang.toString() : 'en'
     }
 }
