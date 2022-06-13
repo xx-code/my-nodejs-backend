@@ -51,7 +51,6 @@ export interface user extends Document {
     username: string,
     firstname: string,
     lastname: string,
-    aboutMe: string,
     picture?: string|media,
     phoneNumbers: string[],
     priority: number,
@@ -81,8 +80,12 @@ export interface signUpUser extends user {
 
 export interface signUpUserError {
     emailError?: string;
+    firstnameError?: string;
+    lastnameError?: string;
+    usernameError?: string;
     passwordError?: string;
     confirmPassword?: string;
+    priorityError?: string;
 };
 
 const User: Model<user> = model('users', UserSchema);
