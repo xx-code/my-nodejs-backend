@@ -9,20 +9,20 @@ export interface request {
 };
 
 export const ResponseCode = {
-    OK : 200,
-    Created : 201,
-    No_Content: 204,
-    Bad_Request: 400,
-    Unauthorized: 401,
-    Forbidden: 403,
-    NotFound: 404,
-    InternalServerError: 500
+    OK : { code: 200, message: 'Success'},
+    Created : { code: 201, message: 'Created'},
+    No_Content: { code: 204, message: 'No Content'},
+    Bad_Request: { code: 400, message: 'Bad request'},
+    Unauthorized: { code: 401, message: 'Unauthorized'},
+    Forbidden: {  code: 403, message: 'Forbidden'},
+    NotFound: { code: 404, message: 'Not Found'},
+    InternalServerError: { code: 500, message: 'Internal Server Error'}
 }
 
 export namespace Response {
     export let instance:any;
 
-    export function pushError(status:number, error:string, message:string) {
+    export function pushError(status:number, error:string, message:any) {
         if (instance)
             return instance.status(status).send({ error: error, message: message });
         throw new Error('error operation impossible - verify if instance is initialize');
