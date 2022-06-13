@@ -1,0 +1,54 @@
+{
+    "fieldEmailEmpty": {
+        "fr": "Veuillez inserer un email",
+        "en": "Email field is empty"
+    },
+    "fieldUserNotExist": {
+        "fr": "C'est l'utilisateur n'existe pas",
+        "en": "User doesn't existe"
+    },
+    "fieldFirstnameEmpty": {
+        "fr": "Veuillez inserer un prenom",
+        "en": "Firstname field is empty"
+    },
+    "fieldLastnameEmpty": {
+        "fr": "Veuillez inserer un nom",
+        "en": "lastname field is empty"
+    },
+    "fieldPasswordEmpty": {
+        "fr": "Veuillez inserer un mot de passe",
+        "en": "password field is empty"
+    },
+    "fieldConfirmPasswordEmpty": {
+        "fr": "Veuillez inserer un mot de passe de confirmation",
+        "en": "confirm password field is empty"
+    },
+    "fieldUsernameEmpty": {
+        "fr": "veuillez inserer un nom d'utilisateur",
+        "en": "username field is empty"
+    },
+    "fieldPriority": {
+        "fr": "veuillez inserer une niveau de priorite",
+        "en": "level priority field is empty"
+    },
+    "passwordAndConfirmPasswordDifferent": {
+        "fr": "Le mot de passe ne correspond pas au mot de passe de confirmation",
+        "en": "password and confirm password are different"
+    },
+    "emailOrPasswordError": {
+        "fr": "Email ou le mot de password sont incorrect",
+        "en": "email or password are incorrect"
+    },
+    "userNoFound": {
+        "fr": "l'utilisateur n'existe pas",
+        "en": "User no found"
+    },
+    "impossibleToDeleteUser": {
+        "fr": "Impossibile de supprimer l'utilisateur",
+        "en": "Impossible to delete user"
+    },
+    "impossibleToModifyUser": {
+        "fr": "Impossible de modifier l'utilisateur",
+        "en": "Impossible to modify user"
+    }
+}
