@@ -59,6 +59,7 @@ export interface user extends Document {
 };
 
 export interface currentUser extends Document {
+    _id: any,
     email: string,
     username: string,
     firstname: string,
