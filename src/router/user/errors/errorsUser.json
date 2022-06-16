@@ -3,6 +3,10 @@
         "fr": "Veuillez inserer un email",
         "en": "Email field is empty"
     },
+    "userAlreadyExiste": {
+        "fr": "Cette utilisateur existe deja",
+        "en": "User already exist"
+    },
     "fieldUserNotExist": {
         "fr": "C'est l'utilisateur n'existe pas",
         "en": "User doesn't existe"

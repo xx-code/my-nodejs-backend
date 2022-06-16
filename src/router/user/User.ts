@@ -3,10 +3,10 @@ import jwt = require('jsonwebtoken');
 import { Utils } from '../../utils/Utils';
 import User, { user, signInUser, signUpUser, currentUser, signUpUserError } from '../../models/User';
 import Request from '../Request';
-import { request } from '../Response';
+import { request, ResponseCode } from '../Response';
 import Validator from 'validator';
 
-const errorMessage = require('./errors/errorUser.json');
+const errorMessage = require('./errors/errorsUser.json');
 
 export default class UserRequest implements Request {
 
@@ -25,31 +25,38 @@ export default class UserRequest implements Request {
     async read(req: request) {
         const id = req.param.id;
         const user: currentUser = req.body;
-        const lang = Utils.matchLanguage(req.query.lang);
+        const lang = Utils.matchLanguage(req);
 
-        let userFound;
+        let userFound = null;
 
-        if (Utils.isEmpty(id))
-            throw errorMessage.fieldUserNotExist[lang]; 
-        else 
-            userFound = User.findById(id);
-
-        if (Utils.isEmpty(user.email))
-            throw errorMessage.fieldUserNotExist[lang];
-        else 
+        if (!Utils.isEmpty(user.email))
             userFound = User.findOne({ email: user.email });
 
-        if (Utils.isEmpty(user.username))
-            throw errorMessage.fieldUserNotExist[lang];
-        else 
+        if (!Utils.isEmpty(id)) 
+            userFound = User.findById(id);
+
+        if (!Utils.isEmpty(user.username))
             userFound = await User.findOne({ username: user.username });
+        
+        if (userFound == null)
+            throw { code: ResponseCode.NotFound.code, error:errorMessage.fieldUserNotExist[lang] };
   
         return <currentUser> userFound;
             
     }
+
+    async isUserExiste(req: request) {
+        try {
+            await this.read(req);
+            return true;
+        } catch(err) {
+            return false;
+        }
+    }
+
     inputValidation(input: signUpUser, language: string) {
         let isValid = true;
-        let errors: signUpUserError;
+        let errors: signUpUserError = {};
 
         // refacortor input do avoid undefined
         input.email = !Utils.isEmpty(input.email) ? input.email : '';
@@ -67,7 +74,7 @@ export default class UserRequest implements Request {
 
         if (!Validator.isEmail(input.email)) {
             isValid = false;
-            errors.emailError = errorMessage.fieldEmailExist[language];
+            errors.emailError = errorMessage.fieldUserNotExist[language];
         }
 
         if (Validator.isEmpty(input.password)) {
@@ -102,7 +109,7 @@ export default class UserRequest implements Request {
 
         if (input.password != input.confirmPassword) {
             isValid = false;
-            errors.confirmPassword = errorMessage.fpasswordAndConfirmPasswordDifferent[language];
+            errors.confirmPassword = errorMessage.passwordAndConfirmPasswordDifferent[language];
         }
 
         return {
@@ -114,13 +121,15 @@ export default class UserRequest implements Request {
 
     }
     async signUp(req: request) {
+        const lang = Utils.matchLanguage(req);
         const userInput: signUpUser = req.body;
-        const { isValid, errors } = this.inputValidation(userInput, Utils.matchLanguage(req.query.lang));
+        const { isValid, errors } = this.inputValidation(userInput, lang);
 
         if (!isValid)
-            throw errors;
+            throw { code: ResponseCode.Bad_Request.code, error: errors };
 
-        this.read(req);
+        if (await this.isUserExiste(req))
+            throw { code: ResponseCode.Bad_Request.code, error: errorMessage.userAlreadyExiste[lang] };
         
         const password = await this.hashPassword(userInput.password);
         userInput.password = password;
