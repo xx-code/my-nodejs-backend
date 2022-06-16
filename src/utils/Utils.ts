@@ -17,7 +17,8 @@ export namespace Utils {
         return false;
     }
 
-    export function matchLanguage(query: request) {
+    export function matchLanguage(req: request) {
+        const query = !isEmpty(req.query) ? req.query : '';
         return !isEmpty(query.lang) ? query.lang.toString() : 'en'
     }
 }
