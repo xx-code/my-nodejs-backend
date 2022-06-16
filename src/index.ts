@@ -1,6 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import userRouter from './router/user';
+import bodyParser from 'body-parser';
+import passport from 'passport';
 
 const app = express();
 dotenv.config();
@@ -17,6 +20,11 @@ mongoose
         // tslint:disable-next-line:no-console
         console.log(err);
     });
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use('/users', userRouter);
 
 app.get('/', (req, res) => {
     res.send({
