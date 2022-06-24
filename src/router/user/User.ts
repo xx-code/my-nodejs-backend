@@ -19,24 +19,23 @@ export default class UserRequest implements Request {
         if (currentUser.priority != 0 || currentUser._id != id)
             throw { code: ResponseCode.Forbidden.code, error:errorMessage.NoAuthorization[lang] }
 
-        try {
-            let user = null;
+        let user = null;
 
+        try { 
             if (!Utils.isEmpty(id))
                 user = await User.findById(id);
-            
-            if (user == null)
-                throw { code: ResponseCode.NotFound.code, error:errorMessage.userNoFound[lang] }
-            
-            // force!! double security to ensure anybody to modify password here;
-            inputUser.password = undefined;
-
-            await user.updateOne({$set: inputUser });
         } catch(err) {
             console.log(err);
             throw { code: ResponseCode.InternalServerError, error: 'SERVER ERROR -- REF TO LOG' }
         }
+            
+        if (user == null)
+            throw { code: ResponseCode.NotFound.code, error:errorMessage.userNoFound[lang] }
         
+        // force!! double security to ensure anybody to modify password here;
+        inputUser.password = undefined;
+
+        await user.updateOne({$set: inputUser });
     }  
     delete(req: request) {
         throw new Error('Method not implemented.');
@@ -56,14 +55,21 @@ export default class UserRequest implements Request {
 
         let userFound = null;
 
-        if (!Utils.isEmpty(user.email))
+        try { 
+
+            if (!Utils.isEmpty(user.email))
             userFound = await User.findOne({ email: user.email });
 
-        if (!Utils.isEmpty(id)) 
-            userFound = await User.findById(id);
+            if (!Utils.isEmpty(id)) 
+                userFound = await User.findById(id);
 
-        if (!Utils.isEmpty(user.username))
-            userFound = await User.findOne({ username: user.username });
+            if (!Utils.isEmpty(user.username))
+                userFound = await User.findOne({ username: user.username });
+
+        } catch(err) {
+            console.log(err);
+            throw { code: ResponseCode.InternalServerError, error: 'SERVER ERROR -- REF TO LOG' }
+        }
         
         if (userFound == null)
             throw { code: ResponseCode.NotFound.code, error:errorMessage.fieldUserNotExist[lang] };
