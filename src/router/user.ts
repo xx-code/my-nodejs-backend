@@ -1,6 +1,7 @@
 import express from 'express';
 import { Response, ResponseCode, request } from './Response';
 import RouterFactory from './RouterFactory';
+import passport from 'passport';
 
 const router = express.Router();
 
@@ -55,6 +56,19 @@ router.get('/', async (req, res) => {
         response.pushSuccess(ResponseCode.OK.code, { users });
     } catch(err) {
         console.log(err)
+        response.pushError(err.code, err.message, err.error);
+    }
+});
+
+router.put('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    const response = Response;
+    response.instance = res;
+    const requestData: request = req;
+    try {
+        await userRequest.update(requestData);
+        response.pushSuccess(ResponseCode.OK.code, { success: true })
+    } catch(err) {
+        console.log(err);
         response.pushError(err.code, err.message, err.error);
     }
 });

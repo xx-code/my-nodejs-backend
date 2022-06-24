@@ -54,5 +54,9 @@
     "impossibleToModifyUser": {
         "fr": "Impossible de modifier l'utilisateur",
         "en": "Impossible to modify user"
+    },
+    "NoAuthorization": {
+        "fr": "Vous etes pas authoriser a faire cette action",
+        "en": "This action is forbidden"
     }
 }

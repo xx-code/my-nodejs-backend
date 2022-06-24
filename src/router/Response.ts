@@ -5,7 +5,8 @@ export interface request {
     body?: any,
     file?: any,
     files?: any,
-    lang?: any
+    lang?: any,
+    user?: any
 };
 
 export const ResponseCode = {

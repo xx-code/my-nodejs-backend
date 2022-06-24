@@ -70,6 +70,17 @@ export interface currentUser extends Document {
     updateDate: Date
 };
 
+export interface updateUserInput extends Document {
+    email?: string,
+    password?: string,
+    username?: string,
+    firstname?: string,
+    lastname?: string,
+    picture?: string|media,
+    phoneNumbers?: string[],
+    priority?: number
+}
+
 export interface signInUser {
     email?: string;
     password?: string;

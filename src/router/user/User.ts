@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt = require('jsonwebtoken');
 import { Utils } from '../../utils/Utils';
-import User, { user, signInUser, signUpUser, currentUser, signUpUserError, signInUserError } from '../../models/User';
+import User, { user, signInUser, signUpUser, currentUser, signUpUserError, signInUserError, updateUserInput } from '../../models/User';
 import Request from '../Request';
 import { request, ResponseCode } from '../Response';
 import Validator from 'validator';
@@ -10,8 +10,30 @@ const errorMessage = require('./errors/errorsUser.json');
 
 export default class UserRequest implements Request {
 
-    update(req: request) {
-        throw new Error('Method not implemented.');
+    async update(req: request) {
+        const id = req.params.id;
+        const currentUser: currentUser = req.user;
+        const lang = Utils.matchLanguage(req);
+        const inputUser: updateUserInput = req.body;
+
+        if (currentUser.priority != 0 || currentUser._id != id)
+            throw { code: ResponseCode.Forbidden.code, error:errorMessage.NoAuthorization[lang] }
+
+        try {
+            let user = null;
+
+            if (!Utils.isEmpty(id))
+                user = await User.findById(id);
+            
+            if (user == null)
+                throw { code: ResponseCode.NotFound.code, error:errorMessage.userNoFound[lang] }
+            
+            await user.updateOne({$set: inputUser });
+        } catch(err) {
+            console.log(err);
+            throw { code: ResponseCode.InternalServerError, error: 'SERVER ERROR -- REF TO LOG' }
+        }
+        
     }  
     delete(req: request) {
         throw new Error('Method not implemented.');
