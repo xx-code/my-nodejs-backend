@@ -28,6 +28,9 @@ export default class UserRequest implements Request {
             if (user == null)
                 throw { code: ResponseCode.NotFound.code, error:errorMessage.userNoFound[lang] }
             
+            // force!! double security to ensure anybody to modify password here;
+            inputUser.password = undefined;
+
             await user.updateOne({$set: inputUser });
         } catch(err) {
             console.log(err);
