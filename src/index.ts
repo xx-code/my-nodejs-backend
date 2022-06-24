@@ -4,11 +4,13 @@ import mongoose from 'mongoose';
 import userRouter from './router/user';
 import bodyParser from 'body-parser';
 import passport from 'passport';
+import passportConfig from './middleware/passport';
 
 const app = express();
 dotenv.config();
 
 const DB_KEY = process.env.MONGODB_KEY != null ? process.env.MONGODB_KEY : '';
+const SECRET_KEY = process.env.JWT_SECRET != null ? process.env.JWT_SECRET : '';
 
 mongoose
     .connect(DB_KEY)
@@ -23,6 +25,9 @@ mongoose
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+passportConfig(passport, SECRET_KEY);
+app.use(passport.initialize());
 
 app.use('/users', userRouter);
 
