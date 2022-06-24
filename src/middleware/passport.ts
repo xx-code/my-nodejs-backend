@@ -11,7 +11,8 @@ export default (passport:any, key:any) => {
     opts.secretOrKey = key;
     passport.use(
         new Strategy(opts, (jwt_payload, done) => {
-            User.findById(jwt_payload.id)
+            const paylaod = jwt_payload._doc
+            User.findById(paylaod._id)
                 .then(user => {
                     if (user) {
                         return done(null, user);
