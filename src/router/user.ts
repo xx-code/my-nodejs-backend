@@ -44,6 +44,19 @@ router.post('/signin', async (req, res) => {
         console.log(err)
         response.pushError(err.code, err.message, err.error);
     }
-})
+});
+
+router.get('/', async (req, res) => {
+    const response = Response;
+    response.instance = res;
+    const requestData: request = req;
+    try {
+        const users = await userRequest.readAll(requestData);
+        response.pushSuccess(ResponseCode.OK.code, { users });
+    } catch(err) {
+        console.log(err)
+        response.pushError(err.code, err.message, err.error);
+    }
+});
 
 export default router;

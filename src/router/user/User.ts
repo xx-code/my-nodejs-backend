@@ -19,8 +19,10 @@ export default class UserRequest implements Request {
     deletes(req: request) {
         throw new Error('Method not implemented.');
     }
-    readAll(req: request) {
-        throw new Error('Method not implemented.');
+    async readAll(req: request) {
+        let users = await User.find();
+
+        return users;
     }
     async read(req: request) {
         const id = req.params.id;
@@ -177,7 +179,7 @@ export default class UserRequest implements Request {
         return newUser;
     }
     async modifyPassword(req: request) {
-        
+
     }
     generateToken(input: any) {
         // sign function take plainObject
