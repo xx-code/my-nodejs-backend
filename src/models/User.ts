@@ -79,6 +79,7 @@ export interface updateUserInput extends Document {
     picture?: string|media,
     phoneNumbers?: string[],
     priority?: number
+    updateDate?: number
 }
 
 export interface signInUser {

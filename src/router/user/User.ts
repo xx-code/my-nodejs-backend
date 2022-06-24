@@ -34,6 +34,7 @@ export default class UserRequest implements Request {
         
         // force!! double security to ensure anybody to modify password here;
         inputUser.password = undefined;
+        inputUser.updateDate = Date.now();
 
         await user.updateOne({$set: inputUser });
     }  
