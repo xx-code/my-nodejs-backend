@@ -90,6 +90,12 @@ export interface signUpUser extends user {
     confirmPassword: string;
 };
 
+export interface modifyPasswordUser {
+    oldpassword: string,
+    newPassword: string,
+    confirmNewPassword: string,
+}
+
 export interface signUpUserError {
     emailError?: string;
     firstnameError?: string;

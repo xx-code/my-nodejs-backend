@@ -43,6 +43,10 @@
         "fr": "Email ou le mot de password sont incorrect",
         "en": "email or password are incorrect"
     },
+    "oldPasswordError": {
+        "fr": "Ce mot de passe est incorrect",
+        "en": "password is incorrect"
+    },
     "userNoFound": {
         "fr": "l'utilisateur n'existe pas",
         "en": "User no found"

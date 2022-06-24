@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt = require('jsonwebtoken');
 import { Utils } from '../../utils/Utils';
-import User, { user, signInUser, signUpUser, currentUser, signUpUserError, signInUserError, updateUserInput } from '../../models/User';
+import User, { user, signInUser, signUpUser, currentUser, signUpUserError, signInUserError, updateUserInput, modifyPasswordUser } from '../../models/User';
 import Request from '../Request';
 import { request, ResponseCode } from '../Response';
 import Validator from 'validator';
@@ -204,7 +204,30 @@ export default class UserRequest implements Request {
         return newUser;
     }
     async modifyPassword(req: request) {
+        const lang = Utils.matchLanguage(req);
+        const userInput: modifyPasswordUser = req.body;
+        const user: currentUser = req.user;
 
+        let userFound = null;
+
+        try {
+            userFound = await User.findById(user._id);
+        } catch(err) {
+            console.log(err)
+            throw { code: ResponseCode.NotFound.code, error:errorMessage.fieldUserNotExist[lang] };
+        }
+
+        const isCorrectPassword = await bcrypt.compare(userInput.oldpassword, userFound.password);
+
+        if (!isCorrectPassword)
+            throw { code: ResponseCode.Bad_Request.code, error: errorMessage.oldPasswordError[lang] };
+
+        if (userInput.newPassword != userInput.confirmNewPassword)
+            throw { code: ResponseCode.Bad_Request.code, error: errorMessage.passwordAndConfirmPasswordDifferent[lang] };
+
+        const hashedNewPassword = await this.hashPassword(userInput.newPassword);
+
+        await userFound.updateOne({ $set: {password: hashedNewPassword} });
     }
     generateToken(input: any) {
         // sign function take plainObject

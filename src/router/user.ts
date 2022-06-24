@@ -66,11 +66,24 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), async (req,
     const requestData: request = req;
     try {
         await userRequest.update(requestData);
-        response.pushSuccess(ResponseCode.OK.code, { success: true })
+        response.pushSuccess(ResponseCode.OK.code, { success: true });
     } catch(err) {
         console.log(err);
         response.pushError(err.code, err.message, err.error);
     }
 });
+
+router.put('/u/modifyPassword', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    const response = Response;
+    response.instance = res;
+    const requestData: request = req;
+    try {
+        await userRequest.modifyPassword(requestData);
+        response.pushSuccess(ResponseCode.OK.code, { success: true });
+    } catch(err) {
+        console.log(err);
+        response.pushError(err.code, err.message, err.error);
+    }
+})
 
 export default router;
