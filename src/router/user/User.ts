@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt = require('jsonwebtoken');
 import { Utils } from '../../utils/Utils';
-import User, { user, signInUser, signUpUser, currentUser, signUpUserError } from '../../models/User';
+import User, { user, signInUser, signUpUser, currentUser, signUpUserError, signInUserError } from '../../models/User';
 import Request from '../Request';
 import { request, ResponseCode } from '../Response';
 import Validator from 'validator';
@@ -23,17 +23,17 @@ export default class UserRequest implements Request {
         throw new Error('Method not implemented.');
     }
     async read(req: request) {
-        const id = req.param.id;
+        const id = req.params.id;
         const user: currentUser = req.body;
         const lang = Utils.matchLanguage(req);
 
         let userFound = null;
 
         if (!Utils.isEmpty(user.email))
-            userFound = User.findOne({ email: user.email });
+            userFound = await User.findOne({ email: user.email });
 
         if (!Utils.isEmpty(id)) 
-            userFound = User.findById(id);
+            userFound = await User.findById(id);
 
         if (!Utils.isEmpty(user.username))
             userFound = await User.findOne({ username: user.username });
@@ -41,8 +41,7 @@ export default class UserRequest implements Request {
         if (userFound == null)
             throw { code: ResponseCode.NotFound.code, error:errorMessage.fieldUserNotExist[lang] };
   
-        return <currentUser> userFound;
-            
+        return userFound;       
     }
 
     async isUserExiste(req: request) {
@@ -54,6 +53,26 @@ export default class UserRequest implements Request {
         }
     }
 
+    inputValidationSignIn(input: signInUser, language: string) {
+        let isValid = true;
+        let errors:signInUserError  = {};
+
+        input.email = !Utils.isEmpty(input.email) ? input.email : '';
+        input.password = !Utils.isEmpty(input.password) ? input.password : '';
+
+        if (Validator.isEmpty(input.email)) {
+            errors.email = errorMessage.emailOrPasswordError[language];
+            isValid = false;
+        }
+
+        if (Validator.isEmpty(input.password)) {
+            errors.password = errorMessage.emailOrPasswordError[language];
+            isValid = false;
+        }
+
+        return { isValid, errors};
+    }
+    
     inputValidation(input: signUpUser, language: string) {
         let isValid = true;
         let errors: signUpUserError = {};
@@ -117,8 +136,27 @@ export default class UserRequest implements Request {
             errors
         }
     }
-    signIn(req: request) {
+    async signIn(req: request) {
+        const lang = Utils.matchLanguage(req);
+        const userInput: signInUser = req.body;
+        const { isValid, errors } = this.inputValidationSignIn(userInput, lang);
+        
+        if (!isValid)
+            throw { code: ResponseCode.Bad_Request.code, error: errors };
 
+        const user  = await this.read(req);
+
+        if (user == null) 
+            throw { code: ResponseCode.Bad_Request.code, error: errorMessage.emailOrPasswordError[lang] };
+        
+        const isCorrectPassword = await bcrypt.compare(userInput.password, user.password);
+
+        if (!isCorrectPassword)
+            throw { code: ResponseCode.Bad_Request.code, error: errorMessage.emailOrPasswordError[lang] };
+    
+        user.password = undefined;
+
+        return this.generateToken(user);
     }
     async signUp(req: request) {
         const lang = Utils.matchLanguage(req);
@@ -138,10 +176,16 @@ export default class UserRequest implements Request {
 
         return newUser;
     }
-    generateToken(input: currentUser) {
+    async modifyPassword(req: request) {
+        
+    }
+    generateToken(input: any) {
+        // sign function take plainObject
         const payload: currentUser = input;
+        // change typescript object to plainOjbect
+        const payloadObject = Object.assign({}, payload);
         const JWT_SECRET = process.env.JWT_SECRET != null ? process.env.JWT_SECRET : '';
-        const token = jwt.sign(payload, JWT_SECRET, {expiresIn: '2h'});
+        const token = jwt.sign(payloadObject, JWT_SECRET, {expiresIn: '2h'});
         return `Bearer ${token}`;
     }
     async hashPassword(password: string) {

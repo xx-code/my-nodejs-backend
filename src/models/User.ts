@@ -89,6 +89,11 @@ export interface signUpUserError {
     priorityError?: string;
 };
 
+export interface signInUserError {
+    email?: string,
+    password?: string
+}
+
 const User: Model<user> = model('users', UserSchema);
 
 export default User;

@@ -9,7 +9,7 @@ const routerFactory = new RouterFactory();
 const userRequest = routerFactory.getInstanceRequest('user');
 
 router.post('/signup', async (req, res) => {
-    const response = Response
+    const response = Response;
     response.instance = res;
     const requestData: request = req;
     try {
@@ -19,5 +19,31 @@ router.post('/signup', async (req, res) => {
         response.pushError(err.code, err.message, err.error);
     }
 });
+
+router.get('/:id', async (req, res) => {
+   const response = Response;
+   response.instance = res;
+   const requestData: request = req;
+   try {
+       const user = await userRequest.read(requestData);
+       user.password = undefined;
+       response.pushSuccess(ResponseCode.OK.code, { user });
+   } catch(err) {
+       response.pushError(err.code, err.message, err.error);
+   }
+});
+
+router.post('/signin', async (req, res) => {
+    const response = Response;
+    response.instance = res;
+    const requestData: request = req;
+    try {
+        const token = await userRequest.signIn(requestData);
+        response.pushSuccess(ResponseCode.OK.code, { token });
+    } catch(err) {
+        console.log(err)
+        response.pushError(err.code, err.message, err.error);
+    }
+})
 
 export default router;

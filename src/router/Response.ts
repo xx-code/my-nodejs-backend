@@ -1,6 +1,6 @@
 
 export interface request {
-    param?: any,
+    params?: any,
     query?: any,
     body?: any,
     file?: any,
