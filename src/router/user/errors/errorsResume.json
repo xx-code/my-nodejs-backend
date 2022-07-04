@@ -35,6 +35,10 @@
         "fr": "Veuillez ajouter une date de debut plus petit que la date de fin",
         "en": "Start date must be less than end date"
     },
+    "typeNotValid": {
+        "fr": "Ce resume n'est pas valide",
+        "en": "Type not valid"
+    },
     "NoFound": {
         "fr": "Introuvable",
         "en": "No Found"
@@ -42,5 +46,13 @@
     "NoDelete": {
         "fr": "Impossible de supprimer",
         "en": "Impossible to delete"
+    },
+    "CantStartBefort": {
+        "fr": "Date de debut incoherente",
+        "en": "Start date is incoherent"
+    },
+    "EndDateMustNotDefined": {
+        "fr": "Vous ne devez pas definir une date de fin",
+        "en": "Don't need to define an end date"
     }
 }
