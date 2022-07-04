@@ -9,6 +9,9 @@ import Validator from 'validator';
 const errorMessage = require('./errors/errorsUser.json');
 
 export default class UserRequest implements Request {
+    add(req: request) {
+        throw new Error('Method not implemented.');
+    }
 
     async update(req: request) {
         const id = req.params.id;
