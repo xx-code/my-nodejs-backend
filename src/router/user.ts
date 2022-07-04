@@ -1,13 +1,12 @@
 import express from 'express';
 import { Response, ResponseCode, request } from './Response';
-import RouterFactory from './RouterFactory';
 import passport from 'passport';
+import UserRequest from './user/User';
 
 const router = express.Router();
 
-const routerFactory = new RouterFactory();
 
-const userRequest = routerFactory.getInstanceRequest('user');
+const userRequest = new UserRequest();
 
 router.post('/signup', async (req, res) => {
     const response = Response;
