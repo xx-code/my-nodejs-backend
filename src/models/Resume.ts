@@ -53,6 +53,7 @@ export interface resumeError {
     titleError?: string,
     detailError?: string,
     startDateError?: string,
+    endDateError?: string,
     typeError?: string
 };
 

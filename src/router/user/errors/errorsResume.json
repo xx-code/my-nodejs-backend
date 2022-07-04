@@ -1,0 +1,46 @@
+{
+    "userNotIdentified": {
+        "fr": "Utilisateur non identifié",
+        "en": "User Not identified"
+    },
+    "haveToTargetUser": {
+        "fr": "l'id de l'utilisateur doit etre mentionné",
+        "en": "User id have to be mention"
+    },
+    "fieldTitleError": {
+        "fr": "Veuillez inserer un titre",
+        "en": "Title field is empty"
+    },
+    "fieldDetailError": {
+        "fr": "Veuillez inserer un detail",
+        "en": "Detail field is empty"
+    },
+    "fieldTypeError": {
+        "fr": "Veuillez inserer un type",
+        "en": "Type field is empty"
+    },
+    "fieldDetail": {
+        "fr": "Veuillez inserer un detail",
+        "en": "Detail field is empty"
+    },
+    "fieldStartDateError": {
+        "fr": "Veuillez inserer une date de debut",
+        "en": "Start date is empty"
+    },
+    "fieldEndDateError": {
+        "fr": "Veuillez inserer une date de fin",
+        "en": "End date is empty"
+    },
+    "dateStartLessThanEndDate": {
+        "fr": "Veuillez ajouter une date de debut plus petit que la date de fin",
+        "en": "Start date must be less than end date"
+    },
+    "NoFound": {
+        "fr": "Introuvable",
+        "en": "No Found"
+    },
+    "NoDelete": {
+        "fr": "Impossible de supprimer",
+        "en": "Impossible to delete"
+    }
+}
