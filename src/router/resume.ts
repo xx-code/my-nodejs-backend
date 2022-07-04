@@ -71,3 +71,5 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), async (r
         response.pushError(err.code, err.message, err.error);
     }
 });
+
+export default router;
