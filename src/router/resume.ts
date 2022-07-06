@@ -20,7 +20,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
     }
 });
 
-router.get('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.get('/:id', async (req, res) => {
     const response = Response;
     response.instance = res;
     const requestData: request = req;
@@ -33,7 +33,7 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), async (req,
     }
 });
 
-router.get('/allBy/:userId', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.get('/allBy/:userId', async (req, res) => {
     const response = Response;
     response.instance = res;
     const requestData: request = req;

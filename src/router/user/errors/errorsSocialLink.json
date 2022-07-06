@@ -14,5 +14,9 @@
     "fieldDetailError": {
         "fr": "Veuillez inserer un detail",
         "en": "Detail field error"
+    },
+    "noFound": {
+        "fr": "Lien n'existe pas",
+        "en": "Link does not exist"
     }
 }
