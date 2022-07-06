@@ -1,0 +1,18 @@
+{
+    "haveToTargetUser": {
+        "fr": "l'id de l'utilisateur doit etre mentionné",
+        "en": "User id have to be mention"
+    },
+    "fieldUrlError": {
+        "fr": "Veuillez inserer une url",
+        "en": "Url field error"
+    },
+    "fieldNameError": {
+        "fr": "Veuillez inserer un nom",
+        "en": "Name field error"
+    },
+    "fieldDetailError": {
+        "fr": "Veuillez inserer un detail",
+        "en": "Detail field error"
+    }
+}

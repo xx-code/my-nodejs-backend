@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import userRouter from './router/user';
 import resumeRouter from './router/resume';
+import socialLinkRouter from './router/socialLink';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import passportConfig from './middleware/passport';
@@ -33,6 +34,8 @@ app.use(passport.initialize());
 app.use('/users', userRouter);
 
 app.use('/resumes', resumeRouter);
+
+app.use('/socialLinks', socialLinkRouter);
 
 app.get('/', (req, res) => {
     res.send({

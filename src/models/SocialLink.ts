@@ -23,10 +23,10 @@ export interface socialLink extends Document {
     name: string
 };
 
-export interface scialLinkError {
-    userError: string,
-    urlError: string,
-    nameError: string
+export interface socialLinkError {
+    userError?: string,
+    urlError?: string,
+    nameError?: string,
 }
 
 const ScialLink: Model<socialLink> = model('socialLinks', SocialLink);
