@@ -29,7 +29,8 @@ export namespace Utils {
                 cb(null, './temp/');
             },
             filename: (req, file, cb) => {
-                cb(null, 'temp' + file.originalname);
+                const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+                cb(null, 'temp' + file.originalname + '-' + uniqueSuffix);
             }
         });
 

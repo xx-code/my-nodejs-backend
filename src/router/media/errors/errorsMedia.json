@@ -1,0 +1,26 @@
+{
+    "mediaNotExist": {
+        "fr": "Le media n'existe pas",
+        "en": "Media doesn't exist"
+    },
+    "deletionError": {
+        "fr": "Une erreur est survenus pendant la suppression",
+        "en": "An Error occur while deleting"
+    },
+    "uploadError": {
+        "fr": "Impossible d'envoyer le media",
+        "en": "Impossible to upload"
+    },
+    "updateError": {
+        "fr": "Impossible de modifier le media",
+        "en": "Impossible to update media"
+    },
+    "maxFile": {
+        "fr": "Impossible d'envoyer plus de 5 fichier",
+        "en": "Max 5 files to upload "
+    },
+    "noFile": {
+        "fr": "Selectionnez au moins un fichier",
+        "en": "Please select a least one file"
+    }
+}
