@@ -1,7 +1,12 @@
 import mongoose, { model, Model, Document } from "mongoose";
+import { currentUser } from "./User";
 const Schema = mongoose.Schema;
 
 const DevSkillSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
     title: {
         type: String,
         required: true
@@ -25,6 +30,7 @@ const DevSkillSchema = new Schema({
 });
 
 export interface devSkill extends Document {
+    user?: string|currentUser,
     title: string,
     description: string,
     icon: string,
@@ -33,6 +39,7 @@ export interface devSkill extends Document {
 }
 
 export interface devSkillError {
+    userError?: string,
     titleError?: string,
     descriptionError?: string,
     iconError?: string,
