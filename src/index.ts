@@ -5,6 +5,7 @@ import userRouter from './router/user';
 import resumeRouter from './router/resume';
 import socialLinkRouter from './router/socialLink';
 import mediaRouter from './router/media';
+import devSkillRouter from './router/devSkill';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import passportConfig from './middleware/passport';
@@ -54,6 +55,8 @@ app.use('/resumes', resumeRouter);
 app.use('/socialLinks', socialLinkRouter);
 
 app.use('/medias', mediaRouter);
+
+app.use('/devSkills', devSkillRouter);
 
 app.get('/', (req, res) => {
     res.send({

@@ -12,8 +12,7 @@ const DevSkillSchema = new Schema({
         required: true
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     icon: {
         type: String,
@@ -25,7 +24,7 @@ const DevSkillSchema = new Schema({
     },
     isCurrentlyUseful: {
         type: Boolean,
-        required: true
+        default: false
     }
 });
 
@@ -41,7 +40,6 @@ export interface devSkill extends Document {
 export interface devSkillError {
     userError?: string,
     titleError?: string,
-    descriptionError?: string,
     iconError?: string,
     levelError?: number,
     isCurrentlyUsefulError?: boolean

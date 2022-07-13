@@ -1,0 +1,22 @@
+{
+    "fieldUserNotExist": {
+        "fr": "C'est l'utilisateur n'existe pas",
+        "en": "User doesn't existe"
+    },
+    "fieldTitleEmpty": {
+        "fr": "Il faut le titre de la compétence",
+        "en": "Insert title of skill"
+    },
+    "fieldIconEmpty": {
+        "fr": "Il faut une icondev pour la competence",
+        "en": "Insert icondev"
+    },
+    "levelEmpty": {
+        "fr": "Il faut ajouter le niveau de la compétence",
+        "en": "Insert level of skill"
+    },
+    "NoFound": {
+        "fr": "devSkill introuvable",
+        "en": "devSkill not exist"
+    }
+}
