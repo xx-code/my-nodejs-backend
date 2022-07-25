@@ -1,0 +1,18 @@
+{
+    "fieldUrlError": {
+        "fr": "Inserer une url",
+        "en": "Insert url"
+    },
+    "fieldPlatformError": {
+        "fr": "Inserer un platform",
+        "en": "Insert platform"
+    },
+    "fieldProject": {
+        "fr": "Inserer projet Id",
+        "en": "Project Id required"
+    },
+    "NoDelete": {
+        "fr": "Impossible de supprimer",
+        "en": "Impossible to delete"
+    }  
+}

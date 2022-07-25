@@ -12,7 +12,7 @@ const ProjectLinkSchema = new Schema({
         type: String,
         required: true
     },
-    plateform: {
+    platform: {
         type: String,
         required: true
     }
@@ -21,12 +21,13 @@ const ProjectLinkSchema = new Schema({
 export interface projectLink extends Document {
     project: string|project,
     url: string,
-    plateform: string
+    platform: string
 };
 
 export interface projectLinkError {
     urlError?: string,
-    plateform?: string
+    platformError?: string
+    projectError?: string
 };
 
 const ProjectLink: Model<projectLink> = model('projectLinks', ProjectLinkSchema);

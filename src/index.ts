@@ -8,6 +8,7 @@ import mediaRouter from './router/media';
 import devSkillRouter from './router/devSkill';
 import developperRouter from './router/developper';
 import projectRouter from './router/project';
+import projectLinkRouter from './router/projectLink';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import passportConfig from './middleware/passport';
@@ -63,6 +64,8 @@ app.use('/user/devSkills', devSkillRouter);
 app.use('/developpers', developperRouter);
 
 app.use('/projects', projectRouter);
+
+app.use('/project/links', projectLinkRouter);
 
 app.get('/', (req, res) => {
     res.send({
