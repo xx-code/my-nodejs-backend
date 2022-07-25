@@ -1,0 +1,30 @@
+{
+    "fieldUserEmpty": {
+        "fr": "Veuillez selectionné un utilisateur",
+        "en": "User not selected"
+    },
+    "fieldNameEmpty": {
+        "fr": "Veuillez ajouter un nom pour le developper",
+        "en": "Inser name for the developper"
+    },
+    "fieldsNameAndUserEmpty": {
+        "fr": "Veuillez ajouter un nom ou un utilisateur",
+        "en": "Inser user or name"
+    },
+    "developperAlreadyExist": {
+        "fr": "Developper existe deja",
+        "en": "Developper already exist"
+    },
+    "developperNoFound": {
+        "fr": "Developper introuvable",
+        "en": "Developper not found"
+    },
+    "chooseBetween": {
+        "fr": "Entrer soit l'id utilisateur ou le nom",
+        "en": "Choose between user id or name"
+    },
+    "userIdNoGood": {
+        "fr": "Ne correspond pas au un id",
+        "en": "No match Id"
+    }
+}

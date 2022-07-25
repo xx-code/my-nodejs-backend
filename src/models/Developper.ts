@@ -3,10 +3,7 @@ import { currentUser } from "./User";
 const Schema = mongoose.Schema;
 
 const DevelopperSchema = new Schema({
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
+    user: String,
     isRegister: {
         type: Boolean,
         default: false
@@ -23,7 +20,7 @@ const DevelopperSchema = new Schema({
 });
 
 export interface developper extends Document {
-    user?: string|currentUser,
+    user?: string,
     name?: string,
     isRegister: boolean,
     creationDate: Date,
