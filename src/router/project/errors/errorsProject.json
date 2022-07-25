@@ -1,0 +1,26 @@
+{
+    "fieldOwnerEmpty": {
+        "fr": "Inserer un proprietaire du projet",
+        "en": "Owner of project required"
+    },
+    "fieldNameEmpty": {
+        "fr": "Inserer un nom projet",
+        "en": "project name empty"
+    },
+    "fieldDescriptionEmpty": {
+        "fr": "Inserer description projet",
+        "en": "Project description empty"
+    },
+    "ownerNotExist": {
+        "fr": "L'utilisateur n'existe pas",
+        "en": "Owner not exist"
+    },
+    "projectNotFound": {
+        "fr": "Projet introuvable",
+        "en": "Project not found"
+    },
+    "impossibleToDelete": {
+        "fr": "Impossible de supprimer le projet",
+        "en": "Impossible to delete the project"
+    }
+}
