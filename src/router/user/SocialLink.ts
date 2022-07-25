@@ -26,7 +26,7 @@ export default class SocialLinkRequest implements Request {
         }
 
         const socialLink = new SocialLink(input);
-        socialLink.save();
+        await socialLink.save();
     }
     async update(req: request) {
         const lang = Utils.matchLanguage(req);
