@@ -21,6 +21,11 @@ export interface projectDevelopper extends Document {
     project: string|project
 };
 
+export interface projectDevelopperError {
+    developperError?: string
+    projectError?: string
+}
+
 const ProjectDevelopper: Model<projectDevelopper> = model('projectDeveloppers', ProjectDevelopperSchema);
 
 export default ProjectDevelopper;

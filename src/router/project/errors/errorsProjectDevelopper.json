@@ -1,0 +1,26 @@
+{
+    "fieldProjectError": {
+        "fr": "Inserer projet id",
+        "en": "Project id required"
+    },
+    "fieldDevelopperError": {
+        "fr": "Inserer developper id",
+        "en": "Developper id required"
+    },
+    "noFound": {
+        "fr": "Lien introuvable",
+        "en": "Link introuvable"
+    },
+    "noDelete": {
+        "fr": "Impossible de supprimer le lien",
+        "en": "Impossible to delete link"
+    },
+    "developperAlreadyLink": {
+        "fr": "Developpeur deja lie",
+        "en": "Developper already linked"
+    },
+    "developperNoFound": {
+        "fr": "Developpeur introuvable",
+        "en": "Developper no found"
+    }
+}
