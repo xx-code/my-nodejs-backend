@@ -51,13 +51,13 @@ app.use(passport.initialize());
 
 app.use('/users', userRouter);
 
-app.use('/resumes', resumeRouter);
+app.use('/user/resumes', resumeRouter);
 
-app.use('/socialLinks', socialLinkRouter);
+app.use('/user/socialLinks', socialLinkRouter);
 
 app.use('/medias', mediaRouter);
 
-app.use('/devSkills', devSkillRouter);
+app.use('/user/devSkills', devSkillRouter);
 
 app.use('/developpers', developperRouter);
 
