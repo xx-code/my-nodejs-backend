@@ -3,7 +3,7 @@ import { media } from "./Media";
 import { project } from "./Project";
 const Schema = mongoose.Schema;
 
-const GallerySchema = new Schema({
+const GalleryProjectSchema = new Schema({
     project: {
         type: Schema.Types.ObjectId,
         required: true,
@@ -16,11 +16,16 @@ const GallerySchema = new Schema({
     }
 });
 
-export interface gallery extends Document {
+export interface galleryProject extends Document {
     project: string|project,
     media: string|media
 };
 
-const Gallery: Model<gallery> = model('gallery', GallerySchema);
+export interface galleryProjectError {
+    projectError?: string
+    mediaError?: string
+}
+
+const Gallery: Model<galleryProject> = model('galleryProject', GalleryProjectSchema);
 
 export default Gallery;

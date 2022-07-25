@@ -1,0 +1,26 @@
+{
+    "fieldProjectError": {
+        "fr": "Inserer projet id",
+        "en": "Project id required"
+    },
+    "fieldMediaError": {
+        "fr": "Inserer developper id",
+        "en": "Media id required"
+    },
+    "noFound": {
+        "fr": "Lien introuvable",
+        "en": "Link introuvable"
+    },
+    "noDelete": {
+        "fr": "Impossible de supprimer le lien",
+        "en": "Impossible to delete link"
+    },
+    "mediaAlreadyLink": {
+        "fr": "Media deja lie",
+        "en": "Media already linked"
+    },
+    "mediaNotExist": {
+        "fr": "Media introuvable",
+        "en": "Media not exist"
+    }
+}

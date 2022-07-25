@@ -10,6 +10,7 @@ import developperRouter from './router/developper';
 import projectRouter from './router/project';
 import projectLinkRouter from './router/projectLink';
 import projectDevelopperRouter from './router/projectDevelopper';
+import projectGalleryRouter from './router/galleryProject';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import passportConfig from './middleware/passport';
@@ -69,6 +70,8 @@ app.use('/projects', projectRouter);
 app.use('/project/links', projectLinkRouter);
 
 app.use('/project/developpers', projectDevelopperRouter);
+
+app.use('/project/gallery', projectGalleryRouter);
 
 app.get('/', (req, res) => {
     res.send({
